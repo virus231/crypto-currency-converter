@@ -1,4 +1,3 @@
-
 export type TCoin = {
     name: string,
     fullName: string,

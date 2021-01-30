@@ -1,4 +1,5 @@
 import FormControl from "@material-ui/core/FormControl";
+import { observer, inject } from 'mobx-react'
 import TextField from "@material-ui/core/TextField";
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
@@ -11,7 +12,8 @@ type IConverterBlock = {
     classes: any;
 }
 
-export default function ConverterBlock({classes}: IConverterBlock) {
+const ConverterBlock = inject("currenciesStore")(observer(({classes}: IConverterBlock) => {
+    
     return (
         <Paper className={classes.paper}>
             <div className={classes.crypto}>
@@ -23,7 +25,6 @@ export default function ConverterBlock({classes}: IConverterBlock) {
                         Валюта
                     </InputLabel>
                     <Select
-
                         value={10}
                     >
                         <MenuItem value={10}>Ten</MenuItem>
@@ -57,4 +58,6 @@ export default function ConverterBlock({classes}: IConverterBlock) {
             </Typography>
         </Paper>
     )
-};
+})); 
+
+export default ConverterBlock
